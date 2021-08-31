@@ -2,6 +2,14 @@
 
 Portal allows to render a component at a different place in the parent tree. You can use it to render content which should appear above other elements, similar to Modal. It requires a `PortalProvider` component to be rendered somewhere in the parent tree.
 
+## Install
+
+Add to `package.json`
+
+```
+"react-native-portal": "sergeymild/react-native-portal"
+```
+
 ## Usage
 
 ```sh
