@@ -1,19 +1,28 @@
 import * as React from 'react';
 
 import { StyleSheet, View, Text } from 'react-native';
-import Portal from 'react-native-portal';
+import { Portal, PortalHost } from 'react-native-portal';
+
+const Component = () => {
+  return (
+    <View>
+      <Portal>
+        <View style={styles.container}>
+          <Text>Portal text </Text>
+        </View>
+      </Portal>
+      <Text style={{marginTop: 100}}>Simple text</Text>
+    </View>
+  );
+};
 
 export default function App() {
-  const [result, setResult] = React.useState<number | undefined>();
-
-  React.useEffect(() => {
-    Portal.multiply(3, 7).then(setResult);
-  }, []);
-
   return (
-    <View style={styles.container}>
-      <Text>Result: {result}</Text>
-    </View>
+    <>
+      <PortalHost>
+        <Component />
+      </PortalHost>
+    </>
   );
 }
 
