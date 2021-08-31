@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import { StyleSheet, View, Text } from 'react-native';
-import { Portal, PortalHost } from 'react-native-portal';
+import { Portal, PortalProvider } from 'react-native-portal';
 
 const Component = () => {
   return (
@@ -19,9 +19,9 @@ const Component = () => {
 export default function App() {
   return (
     <>
-      <PortalHost>
+      <PortalProvider>
         <Component />
-      </PortalHost>
+      </PortalProvider>
     </>
   );
 }

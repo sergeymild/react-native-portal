@@ -1,27 +1,49 @@
 # react-native-portal
 
-Portal for React Native
-
-## Installation
-
-```sh
-npm install react-native-portal
-```
+Portal allows to render a component at a different place in the parent tree. You can use it to render content which should appear above other elements, similar to Modal. It requires a `PortalProvider` component to be rendered somewhere in the parent tree.
 
 ## Usage
 
-```js
-import Portal from "react-native-portal";
+```sh
+import React from 'react';
+import { StyleSheet, Text, View } from 'react-native';
+import { Portal, PortalProvider } from 'react-native-portal';
 
-// ...
+const BasicScreen = () => {
+  return (
+    <View style={styles.container}>
+      <View style={styles.box}>
+        <Text style={styles.text}>
+          Text won't be teleported!
+          <Portal>
+            <Text style={styles.text}>
+              Text to be teleported to the root host
+            </Text>
+          </Portal>
+        </Text>
+      </View>
+    </View>
+  );
+};
 
-const result = await Portal.multiply(3, 7);
+const styles = StyleSheet.create({
+  container: { flex: 1 },
+  box: {
+    padding: 24,
+    backgroundColor: '#333',
+  },
+  text: {
+    alignSelf: 'center',
+    textAlign: 'center',
+    margin: 24,
+    backgroundColor: '#eee',
+  },
+});
+
+export default () => (
+  <PortalProvider>
+    <BasicScreen />
+    {/* Text will be teleported to here */}
+  </PortalProvider>
+);
 ```
-
-## Contributing
-
-See the [contributing guide](CONTRIBUTING.md) to learn how to contribute to the repository and the development workflow.
-
-## License
-
-MIT
